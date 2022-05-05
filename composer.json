@@ -1,0 +1,13 @@
+{
+
+  "require": {
+    "vlucas/phpdotenv": "^5.4",
+    "ext-pdo": "*"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "BlogApp\\": "src"
+    }
+  }
+}

@@ -20,13 +20,10 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-$BlogPostController = new BlogPostController();
-$BlogRepository = new MysqlBlogPostRepository();
+$BlogPostController = new BlogPostController(new MysqlBlogPostRepository());
+$BlogCommentsController = new BlogCommentsController(new MysqlCommentsRepository());
 
-$BlogCommentsController = new BlogCommentsController();
-$CommentsRepository = new MysqlCommentsRepository();
 
-$CurrentPost = $BlogPostController->getBlogPost(1, $BlogRepository);
-$CurrentPostComments = $BlogCommentsController->getBlogPostComments(1, $CommentsRepository);
-ViewController::render("post.php", ['post'=>$CurrentPost, 'comments'=>$CurrentPost]);
-
+$CurrentPost = $BlogPostController->getBlogPost(1);
+$CurrentPostComments = $BlogCommentsController->getBlogPostComments(1);
+ViewController::render("post.php", ['post' => $CurrentPost, 'comments' => $CurrentPostComments]);

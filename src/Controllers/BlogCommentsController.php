@@ -7,10 +7,15 @@ use BlogApp\Repository\RepositoryInterface;
 class BlogCommentsController
 {
     private array $BlogPostCommentsArray;
+    private RepositoryInterface $CommentsRepository;
 
-    public function getBlogPostComments(int $BlogPostID, RepositoryInterface $CommentsRepository): self
+    public function __construct(RepositoryInterface $CommentsRepository){
+        $this->CommentsRepository = $CommentsRepository;
+    }
+
+    public function getBlogPostComments(int $BlogPostID): self
     {
-        $this->BlogPostCommentsArray = $CommentsRepository->getById($BlogPostID);
+        $this->BlogPostCommentsArray = $this->CommentsRepository->getById($BlogPostID);
         return $this;
     }
 

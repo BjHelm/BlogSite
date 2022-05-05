@@ -7,7 +7,7 @@ class ViewController
     /**
      * @throws \Exception
      */
-    public static function render($view, $args = [])
+    public static function render($view, $args = []): void
     {
         extract($args, EXTR_SKIP);
 

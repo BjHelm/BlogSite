@@ -7,16 +7,21 @@ use BlogApp\Repository\RepositoryInterface;
 class BlogPostController
 {
     private array $BlogPostArray;
+    private RepositoryInterface $PostsRepository;
 
-    public function getBlogPost(int $BlogPostID, RepositoryInterface $repository): self
+    public function __construct(RepositoryInterface $PostsRepository){
+        $this->PostsRepository = $PostsRepository;
+    }
+
+    public function getBlogPost(int $BlogPostID): self
     {
-        $this->BlogPostArray = $repository->getById($BlogPostID);
+        $this->BlogPostArray = $this->PostsRepository->getById($BlogPostID);
         return $this;
     }
 
-    public function getAllBlogPosts(RepositoryInterface $repository): self
+    public function getAllBlogPosts(): self
     {
-        $this->BlogPostArray = $repository->getAll();
+        $this->BlogPostArray = $this->PostsRepository->getAll();
         return $this;
     }
 
