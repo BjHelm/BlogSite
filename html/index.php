@@ -1,9 +1,8 @@
 <?php
 session_start();
 // Started 05.05.2022 19:45
-
+// Totally Dead 23:02
 //phpinfo();
-
 
 //$salt = "^%$^GHF%^$";
 //$password = "changeme";
@@ -22,7 +21,6 @@ $dotenv->load();
 
 $BlogPostController = new BlogPostController(new MysqlBlogPostRepository());
 $BlogCommentsController = new BlogCommentsController(new MysqlCommentsRepository());
-
 
 $CurrentPost = $BlogPostController->getBlogPost(1);
 $CurrentPostComments = $BlogCommentsController->getBlogPostComments(1);
