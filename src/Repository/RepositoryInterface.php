@@ -4,9 +4,9 @@ namespace BlogApp\Repository;
 
 interface RepositoryInterface
 {
-    public function getAll();
+    public function getAll():array;
 
-    public function getById();
+    public function getById(int $id):array;
 
     public function save();
 
