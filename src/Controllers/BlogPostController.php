@@ -9,7 +9,8 @@ class BlogPostController
     private array $BlogPostArray;
     private RepositoryInterface $PostsRepository;
 
-    public function __construct(RepositoryInterface $PostsRepository){
+    public function __construct(RepositoryInterface $PostsRepository)
+    {
         $this->PostsRepository = $PostsRepository;
     }
 
@@ -25,12 +26,19 @@ class BlogPostController
         return $this;
     }
 
+    public function NewPost($PostData)
+    {
+        // TODO: SANITIZE USER DATA
+
+        $this->PostsRepository->save($PostData);
+    }
+
     /**
      * @throws \Exception
      */
-    public function show($template):void
+    public function show($template): void
     {
-        if(empty($this->BlogPostArray)){
+        if (empty($this->BlogPostArray)) {
             //TODO: Redirect to 404
             die('No post found');
         }
@@ -43,4 +51,5 @@ class BlogPostController
     {
         return $this->BlogPostArray;
     }
+
 }

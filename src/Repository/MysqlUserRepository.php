@@ -9,18 +9,19 @@ class MysqlUserRepository extends UserRepositoryAbstraction
     public function getAll(): array
     {
         // TODO: Implement getAll() method.
-        return ['id'=>1, 'login'=>'username', 'password'=>'$2y$10$4VzSwgPV0YbvNHJKplAUwu25jNNjYDy7f/0FfykNgTVI9wHJywBEO']
+        return ['id' => 1, 'login' => 'username', 'password' => '$2y$10$4VzSwgPV0YbvNHJKplAUwu25jNNjYDy7f/0FfykNgTVI9wHJywBEO'];
     }
 
     public function getById(int $id): array
     {
         // TODO: Implement getById() method.
-        return ['id'=>1, 'login'=>'username', 'password'=>'$2y$10$4VzSwgPV0YbvNHJKplAUwu25jNNjYDy7f/0FfykNgTVI9wHJywBEO']
+        return ['id' => 1, 'login' => 'username', 'password' => '$2y$10$4VzSwgPV0YbvNHJKplAUwu25jNNjYDy7f/0FfykNgTVI9wHJywBEO'];
     }
 
-    public function save()
+    public function save($InputData) : bool
     {
         // TODO: Implement save() method.
+        return true;
     }
 
     public function create()
@@ -38,8 +39,8 @@ class MysqlUserRepository extends UserRepositoryAbstraction
         // TODO: Implement delete() method.
     }
 
-    public function getByName()
+    public function getByName(): array
     {
-        return ['id'=>1, 'login'=>'username', 'password'=>'$2y$10$4VzSwgPV0YbvNHJKplAUwu25jNNjYDy7f/0FfykNgTVI9wHJywBEO']
+        return ['id' => 1, 'login' => 'username', 'password' => '$2y$10$4VzSwgPV0YbvNHJKplAUwu25jNNjYDy7f/0FfykNgTVI9wHJywBEO'];
     }
 }

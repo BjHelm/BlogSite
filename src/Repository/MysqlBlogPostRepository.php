@@ -7,7 +7,7 @@ use PDO;
 class MysqlBlogPostRepository implements RepositoryInterface
 {
 
-    public function getAll():array
+    public function getAll(): array
     {
 
         $pdo = MysqlConnection::connect();
@@ -18,7 +18,7 @@ class MysqlBlogPostRepository implements RepositoryInterface
     }
 
 
-    public function getById(int $id):array
+    public function getById(int $id): array
     {
         $pdo = MysqlConnection::connect();
         $query = "SELECT * FROM posts WHERE id = :postId";
@@ -26,15 +26,30 @@ class MysqlBlogPostRepository implements RepositoryInterface
         $stmt->bindParam(':postId', $id, PDO::PARAM_INT);
         try {
             $stmt->execute();
-        } catch (\PDOException $e){
+        } catch (\PDOException $e) {
             echo $e->getMessage();
         }
         return $stmt->fetchAll();
     }
 
-    public function save()
+    public function save($InputData): bool
     {
-        // TODO: Implement save() method.
+        $pdo = MysqlConnection::connect();
+        $query = "INSERT INTO posts 
+            (author_id, title, img, text) 
+                VALUES 
+            (:author_id, :title, :img, :text) ";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':author_id', $_SESSION['userid'], PDO::PARAM_INT);
+        $stmt->bindParam(':title', $InputData['title'], PDO::PARAM_STR);
+        $stmt->bindParam(':img', $InputData['img'], PDO::PARAM_STR);
+        $stmt->bindParam(':text', $InputData['text'], PDO::PARAM_STR);
+        try {
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+        return true;
     }
 
     public function create()

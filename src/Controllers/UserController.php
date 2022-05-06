@@ -3,7 +3,6 @@
 namespace BlogApp\Controllers;
 
 use BlogApp\Repository\UserRepositoryAbstraction;
-use BlogApp\Repository\UserRepositoryInterface;
 
 class UserController
 {
@@ -12,20 +11,19 @@ class UserController
 
     private UserRepositoryAbstraction $UserRepository;
 
-    public function __construct(UserRepositoryAbstraction $UserRepository){
+    public function __construct(UserRepositoryAbstraction $UserRepository)
+    {
         $this->UserRepository = $UserRepository;
     }
 
-    public function getById($id): self
+    public function getById($id): array
     {
-        $this->UserRepository->getById($id);
-        return $this;
+        return $this->UserRepository->getById($id);
     }
 
-    public function getByName($name): self
+    public function getByName($name): array
     {
-        $this->UserRepository->getByName($name);
-        return $this;
+        return $this->UserRepository->getByName($name);
     }
 
 }

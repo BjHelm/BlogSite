@@ -9,7 +9,8 @@ class BlogCommentsController
     private array $BlogPostCommentsArray;
     private RepositoryInterface $CommentsRepository;
 
-    public function __construct(RepositoryInterface $CommentsRepository){
+    public function __construct(RepositoryInterface $CommentsRepository)
+    {
         $this->CommentsRepository = $CommentsRepository;
     }
 
@@ -22,7 +23,7 @@ class BlogCommentsController
     /**
      * @throws \Exception
      */
-    public function show($template):void
+    public function show($template): void
     {
         ViewController::render($template, $this->BlogPostCommentsArray);
 //        print_r($this->BlogPostCommentsArray);
