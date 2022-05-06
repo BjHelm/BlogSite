@@ -25,6 +25,11 @@ class BlogCommentsController
     public function show($template):void
     {
         ViewController::render($template, $this->BlogPostCommentsArray);
-        print_r($this->BlogPostCommentsArray);
+//        print_r($this->BlogPostCommentsArray);
+    }
+
+    public function toArray(): array
+    {
+        return $this->BlogPostCommentsArray;
     }
 }

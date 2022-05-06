@@ -34,8 +34,13 @@ class BlogPostController
             //TODO: Redirect to 404
             die('No post found');
         }
-        ViewController::render($template, $this->BlogPostArray);
-        print_r($this->BlogPostArray);
+        ViewController::render($template, ['post' => $this->BlogPostArray]);
+//        print_r($this->BlogPostArray);
 
+    }
+
+    public function toArray(): array
+    {
+        return $this->BlogPostArray;
     }
 }
